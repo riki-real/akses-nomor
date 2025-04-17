@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <link rel="stylesheet" href="style.css">
+  <title>Tambah Nomor Akses</title>
+ 
+</head>
+<body>
+  <div class="container" id="mainForm">
+    <h2>Tambah Nomor Akses</h2>
+    <div id="clock">Memuat waktu...</div>
+    <button onclick="togglePanduan()">Lihat Panduan</button>
+    <div id="panduanBox" class="hidden" style="margin-bottom: 1rem; background: #f0f8ff; padding: 1rem; border-radius: 10px;">
+      <h4>Panduan Penggunaan</h4>
+      <ul>
+        <li>Masukkan nomor dan password dengan benar.</li>
+        <li>Nomor yang diblacklist tidak bisa ditambahkan kembali.</li>
+        <li>Gunakan format nomor: +62xxxxxxxxxxx.</li>
+        <li>Admin dapat mengelola daftar nomor melalui login admin.</li>
+      </ul>
+    </div>
+    <input type="text" id="nomor" placeholder="Masukkan Nomor" />
+    <input type="text" id="password" placeholder="Masukkan Password" />
+    <button onclick="tambahNomor()">Tambah</button>
+    <button onclick="toggleDaftarNomor()">Lihat Daftar Nomor</button>
+    <textarea id="listUserArea" class="hidden" readonly style="width: 100%; height: 120px; border: 1px solid #ccc; border-radius: 10px; padding: 10px; font-family: sans-serif;"></textarea> <hr />
+    <h3 style="margin-bottom: 4px; font-weight: bold;">DATA ANDA</h3>
+<textarea id="userPrivate" style="margin-top: 0;"></textarea>
+    <hr />
+    <h3 style="margin-bottom: 4px; font-weight: bold;">AKSES ADMIN</h3>
+    <input type="password" id="adminPass" placeholder="Password Admin" />
+    <button onclick="adminLogin()">Login Admin</button>
+<div class="status hidden" id="status" style="position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 999; transition: opacity 0.5s ease;"></div>
+  </div>
+  <div class="container hidden" id="adminPanel">
+    <h1 style="text-align: center; font-size: 1.5rem; font-weight: bold;">AKSES ADMIN</h1>
+    <button style="background:#28a745;" onclick="toggleBlacklist()">Lihat Daftar Blacklist</button>
+     <div id="blacklistBox" class="hidden" style="margin-top: 1rem; background: #fff0f0; padding: 1rem; border-radius: 10px;">
+  <h4>Nomor yang Diblacklist</h4>
+  <textarea id="blacklistArea" readonly style="width: 100%; height: 120px; border-radius: 10px; font-family: monospace;"></textarea>
+    <button style="background:#28a745;" onclick="hapusDariBlacklist()" style="background:##28a745; color:white; margin-top: 10px;">Hapus dari Blacklist</button>   
+     <select id="blacklistSelect" style="margin-top: 10px;"></select>
+</div>
+    <button style="background:#28a745;" onclick="lihatPengguna()">Refresh Daftar</button>
+<textarea id="outputArea" readonly></textarea>
+    <button style="background:#ff4d4d;" onclick="hapusNomor()">Hapus Nomor</button>
+    <button style="background:#ff4d4d;" onclick="blacklistNomor()">Blacklist Nomor</button>
+     <select id="nomorSelect">
+      <option value="">Pilih nomor...</option>
+    </select>
+    <button style="background:#007bff;" onclick="kembali(true)">BCK</button>
+    <div class="status hidden" id="statusAdmin" style="position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 999; transition: opacity 0.5s ease;"></div>
+  </div>
+  
+  <audio id="notifSound" src="https://j.top4top.io/m_3389ao59k0.mp3" preload="auto"></audio>
+  
+  <script src="main.js"></script>
+</body>
+</html>
