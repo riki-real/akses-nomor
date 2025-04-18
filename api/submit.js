@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
 
   try {
     const fileData = await octokit.repos.getContent({ owner, repo, path });
-    const sha = fileData.data.sha;
+    const sha = fileData.sha;
     const content = Buffer.from(fileData.data.content, "base64").toString("utf8");
     const json = JSON.parse(content);
 
