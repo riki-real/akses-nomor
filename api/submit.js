@@ -56,7 +56,7 @@ module.exports = async (req, res) => {
       waktu: new Date().toISOString()
     });
 
-    const newContent = Buffer.from(JSON.stringify(json, null, 2)).toString("base64");
+    const encodedContent = Buffer.from(JSON.stringify(content, null, 2)).toString("base64");
 
     const result = await octokit.repos.createOrUpdateFileContents({
       owner,
